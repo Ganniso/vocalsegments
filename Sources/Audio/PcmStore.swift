@@ -14,7 +14,7 @@ final class PcmStore {
         self.fileURL = fileURL
         self.headerBytes = headerBytes
         let size = (try? FileManager.default.attributesOfItem(atPath: fileURL.path)[.size] as? Int) ?? 0
-        self.sampleCount = max(0, (size ?? 0) - headerBytes) / 2
+        self.sampleCount = max(0, size - headerBytes) / 2
     }
 
     private func msToSample(_ ms: Int64) -> Int { Int(ms) * Self.sampleRate / 1000 }

@@ -9,7 +9,7 @@ enum AudioDecoder {
         defer { if accessing { assetURL.stopAccessingSecurityScopedResource() } }
 
         let asset = AVURLAsset(url: assetURL)
-        guard let track = try? asset.loadTracks(withMediaType: .audio).first else {
+        guard let track = asset.tracks(withMediaType: .audio).first else {
             throw NSError(domain: "VocalSegments", code: 1,
                           userInfo: [NSLocalizedDescriptionKey: "В файле нет аудиодорожки"])
         }

@@ -44,7 +44,7 @@ final class VoiceRecorder: ObservableObject {
     /// Длительность файла записи в миллисекундах (по размеру WAV).
     static func durationMs(of url: URL) -> Int64 {
         let size = (try? FileManager.default.attributesOfItem(atPath: url.path)[.size] as? Int) ?? 0
-        let dataBytes = max(0, (size ?? 0) - 44)
+        let dataBytes = max(0, size - 44)
         return Int64(dataBytes / 2) * 1000 / Int64(PcmStore.sampleRate)
     }
 }

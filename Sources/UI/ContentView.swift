@@ -131,17 +131,29 @@ struct ContentView: View {
 
     // MARK: - Вспомогательное
 
+    @ViewBuilder
     private func transportButton(title: String, systemImage: String, enabled: Bool,
                                  prominent: Bool = false, tint: Color? = nil,
                                  action: @escaping () -> Void) -> some View {
-        Button(action: action) {
-            Label(title, systemImage: systemImage)
-                .font(.caption)
-                .frame(maxWidth: .infinity)
+        if prominent {
+            Button(action: action) {
+                Label(title, systemImage: systemImage)
+                    .font(.caption)
+                    .frame(maxWidth: .infinity)
+            }
+            .buttonStyle(.borderedProminent)
+            .tint(tint)
+            .disabled(!enabled)
+        } else {
+            Button(action: action) {
+                Label(title, systemImage: systemImage)
+                    .font(.caption)
+                    .frame(maxWidth: .infinity)
+            }
+            .buttonStyle(.bordered)
+            .tint(tint)
+            .disabled(!enabled)
         }
-        .buttonStyle(prominent ? .borderedProminent : .bordered)
-        .tint(tint)
-        .disabled(!enabled)
     }
 
     private func zoom(_ factor: CGFloat) {
