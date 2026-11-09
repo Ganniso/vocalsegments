@@ -1,0 +1,26 @@
+name: VocalSegments
+options:
+  bundleIdPrefix: ru.gavril
+  deploymentTarget: "16.0"
+targets:
+  VocalSegments:
+    type: application
+    platform: iOS
+    deploymentTarget: "16.0"
+    sources:
+      - Sources
+    info:
+      path: VocalSegments-Info.plist
+      properties:
+        CFBundleDisplayName: VocalSegments
+        UILaunchScreen: {}
+        UIRequiresFullScreen: true
+        UISupportedInterfaceOrientations:
+          - UIInterfaceOrientationPortrait
+        NSMicrophoneUsageDescription: "Микрофон нужен, чтобы записать ваш голос поверх выбранного сегмента."
+    settings:
+      base:
+        PRODUCT_BUNDLE_IDENTIFIER: ru.gavril.vocalsegments
+        TARGETED_DEVICE_FAMILY: "1"
+        SWIFT_VERSION: "5.9"
+        IPHONEOS_DEPLOYMENT_TARGET: "16.0"
